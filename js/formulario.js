@@ -42,7 +42,7 @@ const validarFormulario = (e)=>{
 					grupoUsuario.classList.add('formulario__grupo--correcto');
 					campos.usuario = true;
 				} else {
-					error.innerHTML = "El nombre de usuario debe contener"
+					error.innerHTML = "Puede contener letras, números y guiones.<br>Mínimo 4 dígitos, máximo 16"
 					iconInput.classList.remove('fa-circle-check');
 					iconInput.classList.add('fa-circle-xmark');
 					grupoUsuario.classList.remove('formulario__grupo--correcto');
@@ -66,7 +66,7 @@ const validarFormulario = (e)=>{
 					grupoNombre.classList.add('formulario__grupo--correcto');
 					campos.nombre = true;
 				} else {
-					error.innerHTML = ""
+					error.innerHTML = "El nombre solo puede contener letras y espacios"
 					iconInput.classList.remove('fa-circle-check');
 					iconInput.classList.add('fa-circle-xmark');
 					grupoNombre.classList.remove('formulario__grupo--correcto');
@@ -81,6 +81,7 @@ const validarFormulario = (e)=>{
 			function validarPassword(){
 				const iconInput = document.querySelector('.grupo__password i');
 				const error = document.querySelector('.grupo__password .formulario__error');
+				const errorRepeat = document.querySelector('.grupo__repeatpassword .formulario__error');
 
 				if(expresiones.password.test(e.target.value)) {
 					error.innerHTML = ""
@@ -90,12 +91,19 @@ const validarFormulario = (e)=>{
 					grupoPassword.classList.add('formulario__grupo--correcto');
 					campos.password = true;
 				} else {
-					error.innerHTML = ""
+					error.innerHTML = "Mínimo 4 dígitos, máximo 16"
 					iconInput.classList.remove('fa-circle-check');
 					iconInput.classList.add('fa-circle-xmark');
 					grupoPassword.classList.remove('formulario__grupo--correcto');
 					grupoPassword.classList.add('formulario__grupo--incorrecto');
 					campos.password = false;
+					
+					errorRepeat.innerHTML = "Las dos contraseñas deben coincidir"
+					iconInput.classList.remove('fa-circle-check');
+					iconInput.classList.add('fa-circle-xmark');
+					grupoRepeatpassword.classList.remove('formulario__grupo--correcto');
+					grupoRepeatpassword.classList.add('formulario__grupo--incorrecto');
+					campos.repeatPassword = false;
 				}
 			}
 			validarPassword();
@@ -115,7 +123,7 @@ const validarFormulario = (e)=>{
 					grupoRepeatpassword.classList.add('formulario__grupo--correcto');
 					campos.repeatPassword = true;
 				} else {
-					error.innerHTML = ""
+					error.innerHTML = "Las dos contraseñas deben coincidir"
 					iconInput.classList.remove('fa-circle-check');
 					iconInput.classList.add('fa-circle-xmark');
 					grupoRepeatpassword.classList.remove('formulario__grupo--correcto');
@@ -139,7 +147,7 @@ const validarFormulario = (e)=>{
 					grupoCorreo.classList.add('formulario__grupo--correcto');
 					campos.correo = true;
 				} else {
-					error.innerHTML = ""
+					error.innerHTML = "Correo no válido"
 					iconInput.classList.remove('fa-circle-check');
 					iconInput.classList.add('fa-circle-xmark');
 					grupoCorreo.classList.remove('formulario__grupo--correcto');
@@ -163,7 +171,7 @@ const validarFormulario = (e)=>{
 					grupoTelefono.classList.add('formulario__grupo--correcto');
 					campos.telefono = true;
 				} else {
-					error.innerHTML = ""
+					error.innerHTML = "Teléfono no válido"
 					iconInput.classList.remove('fa-circle-check');
 					iconInput.classList.add('fa-circle-xmark');
 					grupoTelefono.classList.remove('formulario__grupo--correcto');
