@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Validación de Formulario con Javascript</title>
+	<link rel="stylesheet" href="https://kit.fontawesome.com/fe2f95854a.css" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> 
+	<link rel="stylesheet" href="./css/estilos.css">
+</head>
+<body>
+
+	<main>
+		<h1>Formulario</h1>
+		<form action="" class="formulario" id="formulario">
+			<div class="formulario__campos">
+				<div class="formulario__grupo grupo__usuario" id="grupo__usuario">
+					<label for="input-usuario" class="formulario__label">Usuario</label>
+					<div class="formulario__grupo--input">
+						<input type="text" name="usuario" id="input-usuario" class="formulario__input" placeholder="Nombre de usuario" required>
+						<i class="fa-solid fa-circle-check formulario__input-icon"></i>
+						<!-- <i class="fa-solid fa-circle-xmark formulario__input-icon"></i> -->
+					</div>
+					<p class="formulario__error"></p>
+				</div>
+				<div class="formulario__grupo grupo__nombre" id="grupo__nombre">
+					<label for="input-nombre" class="formulario__label">Nombre</label>
+					<div class="formulario__grupo--input">
+						<input type="text" name="nombre" id="input-nombre" class="formulario__input" placeholder="Nombre" required>
+						<i class="fa-solid fa-circle-check formulario__input-icon"></i>
+					</div>
+					<p class="formulario__error"></p>
+				</div>
+				<div class="formulario__grupo grupo__password" id="grupo__password">
+					<label for="input-password" class="formulario__label">Contraseña</label>
+					<div class="formulario__grupo--input">
+						<input type="password" name="password" id="input-password" class="formulario__input" required>
+						<i class="fa-solid fa-circle-check formulario__input-icon"></i>
+					</div>
+					<p class="formulario__error"></p>
+				</div>
+				<div class="formulario__grupo grupo__repeatpassword" id="grupo__repeatpassword">
+					<label for="input-repeatpassword" class="formulario__label">Repetir Contraseña</label>
+					<div class="formulario__grupo--input">
+						<input type="password" name="repeatpassword" id="input-repeatpassword" class="formulario__input" required>
+						<i class="fa-solid fa-circle-check formulario__input-icon"></i>
+					</div>
+					<p class="formulario__error"></p>
+				</div>
+				<div class="formulario__grupo grupo__correo" id="grupo__correo">
+					<label for="input-correo" class="formulario__label">Correo Electrónico</label>
+					<div class="formulario__grupo--input">
+						<input type="email" name="correo" id="input-correo" class="formulario__input" placeholder="ejemplo@gmail.com" required>
+						<i class="fa-solid fa-circle-check formulario__input-icon"></i>
+					</div>
+					<p class="formulario__error"></p>
+				</div>
+				<div class="formulario__grupo grupo__telefono" id="grupo__telefono">
+					<label for="input-telefono" class="formulario__label">Teléfono</label>
+					<div class="formulario__grupo--input">
+						<input type="number" name="telefono" id="input-telefono" class="formulario__input" placeholder="0123456789" required>
+						<i class="fa-solid fa-circle-check formulario__input-icon"></i>
+					</div>
+					<p class="formulario__error"></p>
+				</div>
+	
+				<div class="formulario__grupo grupo__terminos" id="grupo__terminos">
+					<div class="formulario__grupo--input formulario__grupo--input-terminos">
+						<input type="checkbox" name="terminos" id="input-terminos" class="formulario__input--terminos">
+						<label for="input-terminos" class="formulario__label formulario__label--terminos">Acepto los Términos y Condiciones</label>
+					</div>
+				</div>
+			</div>
+			<div class="formulario__grupo grupo__submit" id="grupo__submit">
+				<input type="submit" name="submit" id="input-submit" class="formulario__input--submit">
+				<div class="formulario__mensaje-submit">
+					<div class="formulario__submit-error hiddenElement">
+						<i class="fa-solid fa-triangle-exclamation iSubmitError"></i>
+						<p class="formulario__msgIncompleto"><b></b></p>
+					</div>
+					<p class="formulario__msgEnviado hiddenElement"><b>Formulario enviado correctamente!</b></p>
+				</div>
+			</div>
+		</form>
+	</main>
+
+	<script src="./js/formulario.js"></script>
+	<script src="https://kit.fontawesome.com/fe2f95854a.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</body>
+</html>
