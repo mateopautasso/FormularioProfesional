@@ -212,50 +212,55 @@ form.addEventListener('submit', (e)=>{
 
 	}).then((res)=>{
 		if(res) {
-
 			//Consulta de usuario en BD:
-			const validacionEnBD = async ()=>{
-				let request = await fetch('https://sheet.best/api/sheets/41087ecb-5f48-4297-8668-1d8f92ae328e')
-				let response = await request.json();
-				let arrayUserBD = await response;
-				let userInBD = arrayUserBD.some((user)=>{
-					return user.Correo === document.getElementById('input-correo').value;
-				})
-				if(userInBD) {
-					return true
-				} else {
-					return false
-				}
-			}
-			const usuarioEnBD = validacionEnBD()
+			// DEJO DE FUNCIONAR LA API!
+			// const validacionEnBD = async ()=>{
+			// 	let request = await fetch('https://sheet.best/api/sheets/41087ecb-5f48-4297-8668-1d8f92ae328e')
+			// 	let response = await request.json();
+			// 	let arrayUserBD = await response;
+			// 	let userInBD = arrayUserBD.some((user)=>{
+			// 		return user.Correo === document.getElementById('input-correo').value;
+			// 	})
+			// 	if(userInBD) {
+			// 		return true
+			// 	} else {
+			// 		return false
+			// 	}
+			// }
+			// const usuarioEnBD = validacionEnBD()
+			const usuarioEnBD = false
 
 			//Envío de datos:
-			usuarioEnBD.then((res)=>{
-				console.log(res)
-				if(res) {
+			// usuarioEnBD.then((res)=>{
+				if(usuarioEnBD) {
 					console.log('Usuario ya registrado')
 					document.querySelector('.grupo__submit .formulario__submit-error').classList.remove('hiddenElement')
 					document.querySelector('.grupo__submit .formulario__msgIncompleto').innerHTML = "<b>Error: El correo que ingresó ya se encuentra registrado</b>"
-				} else {
-					fetch('https://sheet.best/api/sheets/41087ecb-5f48-4297-8668-1d8f92ae328e', {
-						method: 'POST',
-						headers: {
-							'Content-Type' : 'application/json'
-						},
-						body: JSON.stringify({
-							"Usuario": `${document.getElementById('input-usuario').value}`,
-							"Nombre":`${document.getElementById('input-nombre').value}`,
-							"Correo":`${document.getElementById('input-correo').value}`,
-							"Celular": `${document.getElementById('input-telefono').value}`,
-							"Password": `${document.getElementById('input-password').value}`,
-							"RpPassword": `${document.getElementById('input-repeatpassword').value}`
-						})
-					})
+				} 
+				else {
+					// DEJO DE FUNCIONAR LA API!
+					// fetch('https://sheet.best/api/sheets/41087ecb-5f48-4297-8668-1d8f92ae328e', {
+					// 	method: 'POST',
+					// 	headers: {
+					// 		'Content-Type' : 'application/json'
+					// 	},
+					// 	body: JSON.stringify({
+					// 		"Usuario": `${document.getElementById('input-usuario').value}`,
+					// 		"Nombre":`${document.getElementById('input-nombre').value}`,
+					// 		"Correo":`${document.getElementById('input-correo').value}`,
+					// 		"Celular": `${document.getElementById('input-telefono').value}`,
+					// 		"Password": `${document.getElementById('input-password').value}`,
+					// 		"RpPassword": `${document.getElementById('input-repeatpassword').value}`
+					// 	})
+					// })
 					// alert('Felicitaciones! campos completos')
 					document.querySelector('.grupo__submit .formulario__submit-error').style.display = "none"
-					document.querySelector('.grupo__submit .formulario__msgEnviado').classList.remove('hiddenElement')
+					document.querySelector('.grupo__submit .formulario__msgEnviado').classList.remove('hiddenElement');
+					setTimeout(()=>{
+						location.reload()
+					},5000)
 				}
-			})
+			// })
 		} else {
 			// alert('Terminos y condiciones no aceptadas')
 			document.querySelector('.grupo__submit .formulario__submit-error').classList.remove('hiddenElement')
@@ -263,7 +268,5 @@ form.addEventListener('submit', (e)=>{
 			document.querySelector('.grupo__submit .formulario__msgIncompleto').innerHTML = "<b>Error: Se necesitan aceptar los términos y condiciones para continuar</b>"
 		}
 	})
-	.catch((rej)=>{
-		// alert(rej)
-	})
+
 })
